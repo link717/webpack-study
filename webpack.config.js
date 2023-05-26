@@ -2,10 +2,13 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './source/index.js', // 웹팩으로 빌드할 파일
+  entry: {
+    index: './source/index.js',
+    about: './source/about.js',
+  }, // 웹팩으로 빌드할 파일
   output: {
     path: path.resolve(__dirname, 'public'), // 빌드한 파일을 저장할 경로
-    filename: 'index_bundle.js', // 빌드한 파일의 이름
+    filename: '[name]_bundle.js', // 빌드한 파일의 이름
   },
   module: {
     rules: [
