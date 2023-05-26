@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // html 파일을 템플릿으로 사용하여 동적으로 번들링된 JavaScript 파일을 추가해주는 플러그인
 
 module.exports = {
   mode: 'development',
@@ -21,4 +22,16 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './source/index.html', // template에 해당하는 html 파일을
+      filename: './index.html', // filename에 해당하는 이름으로 빌드한 파일을 저장한다.
+      chunks: ['index'], // index.html에는 index.js를 넣어준다.
+    }),
+    new HtmlWebpackPlugin({
+      template: './source/about.html', // template에 해당하는 html 파일을
+      filename: './about.html', // filename에 해당하는 이름으로 빌드한 파일을 저장한다.
+      chunks: ['about'], // about.html에는 about.js를 넣어준다.
+    }),
+  ],
 };
